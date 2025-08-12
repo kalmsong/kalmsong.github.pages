@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>광주/서울 매매가 및 주요 정책 타임라인</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0/dist/chartjs-plugin-annotation.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            height: 620px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-right: 1.5rem;
+        }
+        .legend-color-box {
+            width: 1rem;
+            height: 1rem;
+            margin-right: 0.5rem;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 0.75rem;
+        }
+        th {
+            background-color: #f1f5f9;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 sm:p-6 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-3xl md:text-4xl font-black text-[#212529] mb-3">광주/서울 매매가 및 주요 정책 타임라인</h1>
+            <p class="text-lg text-gray-600">2009-2025 정책과 시장 변화의 상관관계</p>
+        </header>
+
+        <section class="kpi-card mb-12 p-4 md:p-8 bg-white rounded-lg shadow-lg">
+            <h2 class="text-xl font-bold text-center mb-4">주요 정책 연혁</h2>
+            <div class="overflow-x-auto">
+                <table class="text-sm">
+                    <thead>
+                        <tr>
+                            <th>연도</th>
+                            <th>주요 정책 / 시장 이벤트</th>
+                            <th>내용</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2013</td>
+                            <td>규제 완화 (분양가 상한제 완화)</td>
+                            <td>전매제한, 양도세/취득세 인하 등</td>
+                        </tr>
+                        <tr>
+                            <td>2016</td>
+                            <td>저금리 정책</td>
+                            <td>기준금리 1.25% 유지</td>
+                        </tr>
+                        <tr>
+                            <td>2020.08</td>
+                            <td>지방 광역시 분양권 전매 제한 강화</td>
+                            <td>민간택지 분양권 전매 제한 기간을 6개월에서 소유권 이전 등기일까지로 확대</td>
+                        </tr>
+                        <tr>
+                            <td>2020.12</td>
+                            <td>조정대상지역 지정</td>
+                            <td>LTV 등 대출 규제, 다주택자 세제 중과, 분양권 전매 제한 강화</td>
+                        </tr>
+                        <tr>
+                            <td>2021.07</td>
+                            <td>LTV·DSR 규제 강화</td>
+                            <td>총대출 6억 이상이면 차주단위 DSR 적용 시작</td>
+                        </tr>
+                        <tr>
+                            <td>2022.01</td>
+                            <td>DSR 2단계 시행</td>
+                            <td>총대출 2억 이상이면 차주단위 DSR 적용 시작</td>
+                        </tr>
+                        <tr>
+                            <td>2022.02</td>
+                            <td>광주 고분양가 심사 기준 개편</td>
+                            <td>분양가격 심사 기준을 개편하여 시세 반영 합리화</td>
+                        </tr>
+                        <tr>
+                            <td>2022.07</td>
+                            <td>DSR 규제 강화 및 금리인상</td>
+                            <td>가계대출 규제 강화, 기준금리 3.25%까지 인상</td>
+                        </tr>
+                        <tr>
+                            <td>2022.09</td>
+                            <td>조정대상지역 해제</td>
+                            <td>대출 및 세제 규제 완화, 분양권 전매 제한 등 규제 해제</td>
+                        <tr>
+                            <td>2023.01</td>
+                            <td>분양가상한제 폐지</td>
+                            <td>(강남4구 외) 전면 해제</td>
+                        </tr>
+                        <tr>
+                            <td>2023.03</td>
+                            <td>광주 민간공원 특례사업 분양 시작</td>
+                            <td>광주 지역 내 신규 공급 확대 신호</td>
+                        </tr>
+                        <tr>
+                            <td>2024.10</td>
+                            <td>기준금리 인하 시작</td>
+                            <td>인하 가능성이 시장에 반영되며 기대감 확대</td>
+                        </tr>
+                        <tr>
+                            <td>2025.06</td>
+                            <td>수도권 대출 규제 강화</td>
+                            <td>대출 한도 6억 원 제한 등 매수 심리 냉각</td>
+                        </tr>
+                        <tr>
+                            <td>2025.07</td>
+                            <td>스트레스 DSR 3단계 시행</td>
+                            <td>대출 한도 추가 축소, 매수 심리 위축 심화</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div class="chart-container mt-8">
+                <canvas id="marketTimelineChart"></canvas>
+            </div>
+            <div class="mt-8">
+                <p class="text-gray-600 text-sm mb-4">이 차트는 2015년부터 2025년까지 광주와 서울 아파트의 평균 매매가, 그리고 기준금리 변화를 한눈에 보여줍니다. 차트 위에 표시된 수직선은 상단 표에 정리된 주요 정책 및 시장 이벤트 시점을 나타냅니다. 특히 2024년 하반기부터 2025년 상반기까지의 정책 변화(금리 인하, GTX 개통, 대출 규제 강화 등)가 시장에 미치는 영향을 추적할 수 있습니다.</p>
+                <div class="flex flex-wrap justify-center mt-4">
+                    <div class="legend-item">
+                        <div class="legend-color-box bg-blue-600"></div>
+                        <span>광주 매매가(억원)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color-box bg-red-600"></div>
+                        <span>서울 매매가(억원)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color-box bg-gray-500"></div>
+                        <span>기준금리(%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color-box border-2 border-dashed border-gray-400"></div>
+                        <span>주요 정책</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-right text-xs text-gray-400 mt-4">
+            출처: 부동산통계정보시스템, 2025 KB부동산 보고서, 한국은행 광주전남본부 보도자료 등 재구성
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const policyEvents = [
+                 { year: 2016, label: '저금리 정책', color: 'red' },
+                 { year: 2020, label: '분양권 전매제한 강화', color: 'blue' },
+                 { year: 2020, label: '조정대상지역 지정(LTV·DTI 강화, 전매제한 강화)', color: 'blue' },
+                 { year: 2021, label: 'LTV·DSR 규제 1단계(총대출 6억 초과 적용)', color: 'blue' },
+                 { year: 2022, label: 'DSR 2단계', color: 'blue' },
+                 { year: 2022, label: '광주 고분양가 심사 기준 개편', color: 'red' },
+                 { year: 2022, label: 'DSR 규제강화 및 금리인상', color: 'blue' },
+                 { year: 2022, label: '조정대상지역 해제', color: 'red' },
+                 { year: 2023, label: '분양가상한제 폐지', color: 'red' },
+                 { year: 2023, label: '광주 민간공원 특례사업 분양 시작', color: 'red'},
+                 { year: 2023, label: '전매제한 전국 단축', color: 'red'},
+                 { year: 2024, label: '기준금리 인하 시작', color: 'red'},
+                 { year: 2025, label: '스트레스 DSR 3단계 시행', color: 'blue' },
+            ];
+
+            const getAdjustedAnnotations = (events) => {
+            const groupedEvents = {};
+            events.forEach(event => {
+                if (!groupedEvents[event.year]) {
+                groupedEvents[event.year] = [];
+                }
+                groupedEvents[event.year].push(event);
+                });
+
+             const adjustedAnnotations = [];
+             Object.keys(groupedEvents).forEach(year => {
+                const group = groupedEvents[year];
+             const numEvents = group.length;
+             const baseAdjust = -140; // 기본 y 위치
+            const spacing = 30; // 라벨 간 간격
+
+             group.forEach((event, index) => {
+                let yAdjust = baseAdjust;
+                if (numEvents > 1) {
+                // 이벤트 개수에 따라 위치 조정
+                yAdjust = baseAdjust - (index - (numEvents - 1) / 2) * spacing;
+                }
+
+                adjustedAnnotations.push({
+                type: 'line',
+                mode: 'vertical',
+                scaleID: 'x',
+                value: event.year - 2015,
+                borderColor: 'rgba(108, 117, 125, 0.7)',
+                borderWidth: 1.5,
+                borderDash: [3, 3],
+                label: {
+                    content: event.label,
+                    enabled: true,
+                    position: 'Top',
+                    rotation: -25,
+                    font: { size: 9 },
+                    yAdjust: yAdjust,
+                    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+                    color: event.color,
+                    borderColor: '#ced4da',
+                    borderWidth: 1,
+                    borderRadius: 6,
+                    padding: 6,
+                    clip: false
+                    }
+                    });
+                  });
+                });
+                return adjustedAnnotations;
+                };
+
+            const ctx = document.getElementById('marketTimelineChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023',
+                        '2024','2025'
+                    ],
+                    datasets: [
+                        {
+                            label: '광주 매매가 (만원/m²)',
+                            data: [
+                                244.0, 269.7, 287.0, 298.7, 358.3, 378.8, 424.9, 459.0, 532.1, 562.2, 546.1
+                            ],
+                            borderColor: '#1e40af',
+                            backgroundColor: '#1e40af',
+                            yAxisID: 'y1',
+                            tension: 0,
+                            pointRadius: 3,
+                            type: 'line',
+                            order: 1
+                        },
+                        {
+                            label: '전국 매매가 (만원/m²)',
+                            data: [
+                               269.5, 281.6, 300.8, 323.6, 351.5, 373.3, 415.4, 445.2, 495.3, 562.4, 577.2
+                            ],
+                            borderColor: '#dc2626',
+                            backgroundColor: '#dc2626',
+                            yAxisID: 'y1',
+                            tension: 0,
+                            pointRadius: 3,
+                            type: 'line',
+                            order: 1
+                        },
+                        {
+                            label: '기준금리 (%)',
+                            data: [
+                                1.50, 1.25, 1.50, 1.75, 1.25, 0.50, 1.00, 3.25, 3.50, 3.00, 2.50
+                            ],
+                            borderColor: '#6b7280',
+                            backgroundColor: '#6b7280',
+                            yAxisID: 'y3',
+                            tension: 0,
+                            pointRadius: 3,
+                            type: 'line',
+                            order: 1
+                        },
+                        {
+                            label: '미분양물량',
+                            data: [
+                                735, 554, 707, 58, 148, 31, 27, 291, 596, 1242, 1297
+                            ],
+                            borderColor: '#6b7280',
+                            backgroundColor: '#FF6B6B',
+                            yAxisID: 'y2',
+                            tension: 0,
+                            pointRadius: 3,
+                            type: 'bar',
+                            order: 2,
+                            stack: 'combined',
+                            maxBarThickness: 30
+                        },
+                        {
+                            label: '분양물량',
+                            data: [
+                                8142, 8417, 7831, 3009, 8600, 5189, 2365, 726, 5632, 8716, 469
+                            ],
+                            borderColor: '#6b7280',
+                            backgroundColor: '#E5E7EB',
+                            yAxisID: 'y2',
+                            tension: 0,
+                            pointRadius: 3,
+                            type: 'bar',
+                            order: 2,
+                            stack: 'combined',
+                            maxBarThickness: 30
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    scales: {
+                        x: {
+                            categoryPercentage: 0.1,
+                            barPercentage: 0.1,
+                            title: {
+                                display: true,
+                                text: '연도',
+                                font: { size: 9 }
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: '평균 매매가 (만원/m²)',
+                                font: { size: 9 }
+                            },
+                            ticks: {
+                                callback: function(value) { return value },
+                                stepSize: 100
+                            },
+                            min: 0,
+                            max: 1000
+                        },
+                        y2: {
+                            type: 'linear',
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: '공급량 (세대수)',
+                                font: { size: 9 }
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            },
+                            ticks: {
+                                callback: function(value) { return value ; },
+                                stepSize: 2000
+                            },
+                            min: 0,
+                            max: 20000
+                        },
+                        y3: {
+                            type: 'linear',
+                            position: 'left',
+                            title: {
+                                display: false,
+                                text: '기준금리 (%)',
+                                font: { size: 9 }
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            },
+                            ticks: {
+                                callback: function(value) { return value ; },
+                                stepSize: 10
+                            },
+                            min: 0,
+                            max: 30
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: (tooltipItems) => {
+                                    return tooltipItems[0].label;
+                                },
+                                label: (context) => {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y + (context.dataset.yAxisID === 'y1' ? '만원' : '' );
+                                    }
+                                    return label;
+                                }
+                            }
+                        },
+                        annotation: {
+                            annotations: getAdjustedAnnotations(policyEvents)
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
